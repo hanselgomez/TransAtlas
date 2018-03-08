@@ -1,0 +1,21 @@
+Hemos probado (ver notebooks para más detalles y algún que otro comentario):
+
+>  PCA. 
+
+En el paper proyectando los 2 primeros PC se logran diferenciar tipos de transiciones en un mismo sistema (1ba2_A -- 2gx6_A). 
+Sin embargo si se hace algo parecido con todas las transiciones de un mismo tipo no se observan clusters definidos.
+Tampoco permitiría diferenciar 2 tipos de transiciones distintas si se consideran todas las transiciones de ambos tipos.
+
+> SOM
+
+Lo que mejor a resultado ha sido hacer SOM y clusterizar en el espacio 2D resultante. 
+De momento hemos probado una regla sencilla: que el clúster menos poblado sea de al menos 0.2 % del total, el más poblado no tenga más del 30 % y un máximo de 100 clusters (Este análisis se hace de manera independiente en cada hoja del árbol de ontología). Con este criterio se podría jugar para afinar el num de clusters ... porque hay categorías de transiciones en las que quedan clusters muy poco poblados o viceversa ... podríamos refinar un poco y usar un criterio diferenciado para cada categoría). Por ejemplo, en categoría Mixed con este criterio se obtienen 100 clusters (el máximo posible ... tocando los otros criterios podríamos tener menos).
+
+Luego reportamos qué descriptores se diferencian más entre los distintos clusters resultantes. En todos los casos suelen ser los D_contacts, siempre D2contacts en primer lugar.
+
+Además hemos mirado si esta manera de clusterizar tiene sentido ... al menos visualmente para cada tipo de transición esto agruparía trayectorias más parecidas entre sí desde el punto de vista de los descriptores, sobre todo los
+Dcontacts visto lo anterior.
+
+Se podría implementar que a la hora de hacer un query a TransAtlas simplemente se indicaran aquellas trayetorias que caen en mismo cluter o así ... es decir aquellas que en la misma categóría de transición se le parecen más.
+
+
